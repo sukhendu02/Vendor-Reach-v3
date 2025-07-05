@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> -->
+
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container
+{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: red;
+    background: linear-gradient(to bottom, rgb(6, 108, 224),  rgb(14, 48, 122));
+    width: 800px;
+    height: 450px;
+    margin: 6% auto;;
+    border-radius: 5px;
+}
+
+.content-holder
+{
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    margin-top: 15%;
+    padding: 50px;
+}
+
+.content-holder h2
+{
+    font-size: 34px;
+    margin: 20px auto;
+}
+
+.content-holder p
+{
+    margin: 30px auto;
+}
+
+.content-holder button
+{
+    border:none;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: white;
+    width: 150px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+
+.box-2{
+    background-color: white;
+
+    margin: 5px;
+}
+
+.login-form-container
+{
+    text-align: center;
+    margin-top: 10%;
+
+}
+
+.login-form-container h1
+{
+    color: black;
+    font-size: 24px;
+    padding: 20px;
+}
+
+.input-field,#admin-role
+{
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid rgb(168, 168, 168);
+    width: 250px;
+    outline: none;
+}
+
+.login-button{
+    box-sizing: border-box;
+    color: white;
+    font-size: 14px;
+    padding: 13px;
+    border-radius: 7px;
+    border: none;
+    width: 250px;
+    outline: none;
+    background-color: rgb(56, 102, 189);
+    cursor: pointer;
+}
+
+
+
+.button-2
+{
+    display: none;
+}
+
+
+
+
+
+.signup-form-container
+{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    text-align: center;
+    display: none;
+    margin-top: 10px;
+}
+
+
+.signup-form-container h1
+{
+    color: black;
+    font-size: 24px;
+    padding: 20px;
+}
+
+.signup-button{
+    box-sizing: border-box;
+    color: white;
+    font-size: 14px;
+    padding: 13px;
+    border-radius: 7px;
+    border: none;
+    width: 250px;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(56, 189, 149);  
+}
+body{
+    
+    background: rgb(11,116,241);
+background: linear-gradient(121deg, rgba(11,116,241,0.927608543417367) 0%, rgba(23,12,237,0.938813025210084) 0%, rgba(166,0,255,0.958420868347339) 77%);
+}
+
+@media only screen and (max-width: 768px){
+    .container{
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        
+    grid-template-columns: auto;
+    }
+    .box-2{
+        margin: 0;
+        padding: 5px;
+    }
+}
+
+
+
+
+    </style>
+</head>
+<body >
+    <!-- <div class="waves">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,96L60,80C120,64,240,32,360,42.7C480,53,600,107,720,144C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+        </div> -->
+        <!-- <div class="alert alert-danger" role="alert">
+            A simple danger alert—check it out!
+          </div> -->
+     <div class="container">
+       
+        <!--Data or Content-->
+        <div class="box-1">
+            <div class="content-holder">
+                <h2>Hello!</h2>
+                <p>Welcome  Admin! Login to continue.</p>
+                <button class="button-1" onclick="signup()">Sign up</button>
+                <button class="button-2" onclick="login()">Login</button>
+            </div>
+        </div>
+
+        
+        <!--Forms-->
+        <div class="box-2">
+            <div class="login-form-container">
+                <form action="/admin-login" method="POST">
+                <h1>Login </h1>
+                   {{#if loginerror}}
+            <h5 style="color: rgb(215, 0, 64); padding: 3px;margin-bottom: 3px;">Invalid Credentials</h5>
+          {{/if }}
+
+
+               {{#if success}}
+            <h5 style="color: darkgreen; padding: 3px;margin-bottom: 3px;">Registration Success</h5>
+          {{/if }} 
+                <input type="text" placeholder="Username" name="email" class="input-field" required>
+                <br><br>
+                <input type="password" placeholder="Password" name="password" class="input-field" required>
+                <br><br>
+                <button class="login-button" type="submit">Login</button>
+            </div>
+            </form>
+
+<!--Create Container for Signup form-->
+        <div class="signup-form-container">
+            <form action="/admin-register" method="POST">
+            <h1>Sign Up </h1>
+            {{#if error}}
+            <h5 style="color: rgb(215, 0, 64); padding: 3px;margin-bottom: 3px;">Invalid Credentials</h5>
+          {{/if }}
+
+           
+            <input type="text" placeholder="Username" name="username" class="input-field" required>
+            <br><br>
+            <input type="email" placeholder="Email" name="email" class="input-field" required>
+            <br><br>
+            <select name="role" id="admin-role"  required>
+                <option selected>Select the Role</option>
+                <option value="Developer">Developer</option>
+                <option value="Contet Writer">Contet Writer</option>
+                <option value="Editor">Editor</option>
+            </select><br><br>
+            <input type="text" placeholder="Security key" name="securitykey" class="input-field" autocomplete="off" required>
+            <br><br>
+            <input type="password" placeholder="Password" name="password" class="input-field" required>
+            <br><br>
+            <button class="signup-button" type="submit">Sign Up</button>
+        </div>
+        </form>
+
+
+        </div>
+
+
+
+
+<script>
+    function signup()
+{
+    document.querySelector(".login-form-container").style.cssText = "display: none;";
+    document.querySelector(".signup-form-container").style.cssText = "display: block;";
+    document.querySelector(".container").style.cssText = "background: linear-gradient(to bottom, rgb(56, 189, 149),  rgb(28, 139, 106));";
+    document.querySelector(".button-1").style.cssText = "display: none";
+    document.querySelector(".button-2").style.cssText = "display: block";
+
+};
+
+function login()
+{
+    document.querySelector(".signup-form-container").style.cssText = "display: none;";
+    document.querySelector(".login-form-container").style.cssText = "display: block;";
+    document.querySelector(".container").style.cssText = "background: linear-gradient(to bottom, rgb(6, 108, 224),  rgb(14, 48, 122));";
+    document.querySelector(".button-2").style.cssText = "display: none";
+    document.querySelector(".button-1").style.cssText = "display: block";
+
+}
+</script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> -->
+</body>
+</html>

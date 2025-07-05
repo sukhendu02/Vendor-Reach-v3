@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    {{>headerlinks}}
+    <style>
+         #sidebar ul li.profile a{
+    color: #5e63ff;
+    svg{
+        fill: #5e63ff;
+    }
+ }
+
+ .box{
+  display: flex;
+    width: fit-content;
+    margin: auto;
+    justify-content: space-evenly;
+    width: 50%;
+    flex-direction:column;
+    box-shadow: 0px 0px 5px #1e1e1e; 
+    border-radius:30px
+   
+ }
+ .side-1 i{
+    font-size:130px;
+    color:#5e63ff
+ }
+ .user-details{
+    border: 1.5px solid gray;
+    border-radius:12px;
+    color:#5e63ff;
+
+    
+ }
+ .p-log-btn button{
+    background-color:#5e63ff;
+    border-radius:12px;
+    border: 2px solid #5e63ff;
+    color:#fff;
+    padding:10px 32px;
+ }
+    </style>
+</head>
+<body>
+    {{>adminsidenav}}
+    <main class="text-center">
+    <div class="box">
+        <div class="side-1 p-3">
+           <i class="fa-solid fa-circle-user"></i>
+        </div>
+        <div class="side-2 p-4">
+            <div class="user-details p-2 m-3">{{username}}</div>
+            <div class="user-details p-2 m-3">{{email}}</div>
+            <div class="user-details p-2 m-3">{{role}}</div>
+            <div class="p-log-btn p-2 m-2">
+                <a href="/admin-logout"><button>Logout</button></a>
+            </div>
+        </div>
+    </div>
+       
+    </main>
+</body>
+</html>

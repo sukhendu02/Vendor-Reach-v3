@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  {{!-- <script type="text/javascript" src="app.js" defer></script> --}}
+
+  {{>headerlinks}}
+
+
+  <style>
+   
+  </style>
+</head>
+<body>
+  <nav id="sidebar">
+    <ul>
+      <li>
+        <span class="logo">Aabhaar</span>
+        <button onclick=toggleSidebar() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+      <li class="dash">
+        <a href="/admin">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="leads">
+        <a href="/admin/leads">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M520-640v-160q0-17 11.5-28.5T560-840h240q17 0 28.5 11.5T840-800v160q0 17-11.5 28.5T800-600H560q-17 0-28.5-11.5T520-640ZM120-480v-320q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v320q0 17-11.5 28.5T400-440H160q-17 0-28.5-11.5T120-480Zm400 320v-320q0-17 11.5-28.5T560-520h240q17 0 28.5 11.5T840-480v320q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-360h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>
+          <span>Leads</span>
+        </a>
+      </li>
+      {{!-- <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h207q16 0 30.5 6t25.5 17l57 57h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Zm400-160v40q0 17 11.5 28.5T600-320q17 0 28.5-11.5T640-360v-40h40q17 0 28.5-11.5T720-440q0-17-11.5-28.5T680-480h-40v-40q0-17-11.5-28.5T600-560q-17 0-28.5 11.5T560-520v40h-40q-17 0-28.5 11.5T480-440q0 17 11.5 28.5T520-400h40Z"/></svg>
+          <span>Create</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="#">Folder</a></li>
+            <li><a href="#">Document</a></li>
+            <li><a href="#">Project</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m221-313 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-228q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm0-320 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-548q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm339 353q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h280q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H560Zm0-320q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h280q17 0 28.5 11.5T880-640q0 17-11.5 28.5T840-600H560Z"/></svg>
+          <span>Todo-Lists</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Private</a></li>
+            <li><a href="#">Coding</a></li>
+            <li><a href="#">Gardening</a></li>
+            <li><a href="#">School</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <a href="calendar.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
+          <span>Calendar</span>
+        </a>
+      </li>
+      --}}
+      <li class="profile"> 
+        <a href="/admin/profile">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+          <span>Profile</span>
+        </a>
+      </li>
+      <li> 
+        <a href="/admin-logout">
+          {{!-- <svg  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg> --}}
+          {{!-- <svg><i class="fa-solid fa-power"></i></svg> --}}
+            <svg id="log_in_icon" height="24px" class="header_icon" viewbox="10 0 135 135" xmlns="http://www.w3.org/2000/svg">
+<path id="path1" d="M 39.505192,111.30078 c -21.4583,-2.79124 -23.89267,-5.62556 -17.65467,-20.555208 5.05191,-12.09091 24.60982,-21.91257 31.64435,-15.89127 8.58597,7.34927 18.3949,7.0997 26.42544,-0.67236 5.29381,-5.12343 6.8403,-3.12538 3.00035,3.87642 -4.63016,8.44269 -4.63279,19.17593 -0.007,28.145378 3.18813,6.18166 -16.91934,8.54268 -43.40858,5.09704 z m 19.23103,-36.796438 c -3.92227,-2.42276 -6.08556,-4.92942 -7.91909,-9.17604 -0.82246,-1.90487 -2.41893,-4.8134 -3.54772,-6.4634 -3.38391,-4.94639 -4.35576,-9.99382 -2.64965,-13.76126 0.80667,-1.78131 1.63077,-6.22222 1.83132,-9.8687 1.40895,-25.6179098 37.81394,-23.37365 40.42447,2.49205 0.2852,2.82585 0.9959,6.1258 1.57933,7.33323 2.0526,4.24795 -1.59671,13.63061 -9.77578,25.13429 -4.23698,5.95921 -13.89402,8.04618 -19.94288,4.30983 z"/>
+  <path id="path2" d="M 100.596,117.28386 C 85.437922,111.45435 79.069222,92.988412 87.266572,78.635392 100.83776,54.873142 137.36852,64.439322 137.52514,91.796422 137.63626,111.20715 118.72801,124.25708 100.596,117.28386 Z m 19.74032,-8.09538 c 10.45724,-5.87729 13.21598,-22.797628 4.93837,-30.288768 -4.29393,-3.88595 -7.80157,0.40831 -4.13793,5.06588 4.88957,6.21607 2.72738,16.449868 -4.16671,19.721318 -12.86051,6.10272 -25.040138,-7.223638 -17.183378,-18.801218 4.823328,-7.10758 0.0206,-10.75821 -5.18116,-3.93831 -12.22103,16.0226 7.993958,38.209768 25.730808,28.241098 z m -7.13528,-20.757838 c 1.59283,-2.97623 1.30167,-16.32461 -0.40625,-18.62461 -3.03513,-4.08731 -5.02522,-0.73384 -5.34895,9.01342 -0.35021,10.54513 2.60982,15.48839 5.7552,9.61119 z"/> 
+</svg>
+          <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
+
+  <script>
+    const toggleButton = document.getElementById('toggle-btn')
+const sidebar = document.getElementById('sidebar')
+
+function toggleSidebar(){
+  sidebar.classList.toggle('close')
+  toggleButton.classList.toggle('rotate')
+
+  closeAllSubMenus()
+}
+
+function toggleSubMenu(button){
+
+  if(!button.nextElementSibling.classList.contains('show')){
+    closeAllSubMenus()
+  }
+
+  button.nextElementSibling.classList.toggle('show')
+  button.classList.toggle('rotate')
+
+  if(sidebar.classList.contains('close')){
+    sidebar.classList.toggle('close')
+    toggleButton.classList.toggle('rotate')
+  }
+}
+
+function closeAllSubMenus(){
+  Array.from(sidebar.getElementsByClassName('show')).forEach(ul => {
+    ul.classList.remove('show')
+    ul.previousElementSibling.classList.remove('rotate')
+  })
+}
+  </script>
+</body>
+</html>
