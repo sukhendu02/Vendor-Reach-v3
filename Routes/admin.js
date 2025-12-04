@@ -27,6 +27,7 @@ const leadForms = require("../modals/leadFrom");
 const registeredVen = require("../modals/RegisteredVen");
 const NonRegisteredVen= require("../modals/NonRegisteredVen");
 const QueryForm = require("../modals/QueryForm");
+const user = require("../modals/User");
 // const QueryForm = require("../modals/QueryForm");
 
 module.exports = function (app) {
@@ -48,6 +49,15 @@ module.exports = function (app) {
       allquery,
     });
   })
+  app.get("/admin/users", adminauth, async (req, res) => {
+    const alluser = await user.find({}).sort({ date: -1 });
+    // console.log(alluser);
+    res.render("./admin/admin-user.hbs", {
+      alluser,
+    });
+  })
+
+  
 
   // check for the firstname or firstName for the registered vendor schema
 
@@ -286,7 +296,7 @@ req.flash('success_msg'," Vendor Rejected! Email sent.");
         myData
           .save()
           .then(() => {
-            res.render("./Admin/admin-login.hbs", {
+            res.render("./admin/admin-login.hbs", {
               success: true,
             });
           })
@@ -312,7 +322,7 @@ req.flash('success_msg'," Vendor Rejected! Email sent.");
 
         if (!matched) {
           // console.log('hi from not matched')
-          res.status(400).render("./Admin/admin-login.hbs", {
+          res.status(400).render("./admin/admin-login.hbs", {
             loginerror: true,
           });
         } else {
@@ -325,7 +335,7 @@ req.flash('success_msg'," Vendor Rejected! Email sent.");
           res.redirect("/admin");
         }
       } else {
-        res.render("./Admin/admin-login.hbs", {
+        res.render("./admin/admin-login.hbs", {
           loginerror: true,
         });
       }
